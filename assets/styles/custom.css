@@ -1,5 +1,5 @@
 .loader {
-	top: 10vh;
+	top: 37vh;
 	margin: 0px auto;
 	position: relative;
 }
@@ -11,7 +11,6 @@
 	position: relative;
 	background-color: #FFF;
 	opacity: 1;
-	color: #4A0001;
 }
 
 .main-text {
