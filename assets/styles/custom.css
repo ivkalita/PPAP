@@ -1,0 +1,23 @@
+.loader {
+	top: 10vh;
+	margin: 0px auto;
+	position: relative;
+}
+
+.in-da-middle {
+	font-family: 'Yeseva One', cursive;
+	text-align: center;
+	top: 5vh;
+	position: relative;
+	background-color: #FFF;
+	opacity: 1;
+	color: #4A0001;
+}
+
+.main-text {
+	font-size: 30pt;
+}
+
+body {
+	background-color: #FFF;
+}
