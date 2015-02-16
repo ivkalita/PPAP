@@ -1,18 +1,18 @@
 /**
- * 500 (Server Error) Response
+ * 401 (Authorization Required) Handler
  *
  * Usage:
- * return res.serverError();
- * return res.serverError(err);
- * return res.serverError(err, 'some/specific/error/view');
+ * return res.authorizationRequired();
+ * return res.authorizationRequired(err);
+ * return res.authorizationRequired(err, 'some/specific/forbidden/view');
  *
- * NOTE:
- * If something throws in a policy or controller, or an internal
- * error is encountered, Sails will call `res.serverError()`
- * automatically.
+ * e.g.:
+ * ```
+ * return res.authorizationRequired('Authorization required.');
+ * ```
  */
 
-module.exports = function serverError (data, options) {
+module.exports = function authorizationRequired (data, options) {
 
   // Get access to `req`, `res`, & `sails`
   var req = this.req;
@@ -20,13 +20,13 @@ module.exports = function serverError (data, options) {
   var sails = req._sails;
 
   // Set status code
-  res.status(500);
+  res.status(401);
 
   // Log error to console
   if (data !== undefined) {
-    sails.log.error('Sending 500 ("Server Error") response: \n',data);
+    sails.log.verbose('Sending 401 ("Authorization required") response: \n',data);
   }
-  else sails.log.error('Sending empty 500 ("Server Error") response');
+  else sails.log.verbose('Sending 401 ("Authorization required") response');
 
   // If the user-agent wants JSON, always respond with JSON
   if (req.wantsJSON) {
@@ -46,7 +46,7 @@ module.exports = function serverError (data, options) {
 
   // If no second argument provided, try to serve the default view,
   // but fall back to sending JSON(P) if any errors occur.
-  else return res.view('500', { data: data }, function (err, html) {
+  else return res.view('401', { data: data }, function (err, html) {
 
     // If a view error occured, fall back to JSON(P).
     if (err) {
@@ -54,11 +54,11 @@ module.exports = function serverError (data, options) {
       // Additionally:
       // • If the view was missing, ignore the error but provide a verbose log.
       if (err.code === 'E_VIEW_FAILED') {
-        sails.log.verbose('res.serverError() :: Could not locate view for error page (sending JSON instead).  Details: ',err);
+        sails.log.verbose('res.authorizationRequired() :: Could not locate view for error page (sending JSON instead).  Details: ',err);
       }
       // Otherwise, if this was a more serious error, log to the console with the details.
       else {
-        sails.log.warn('res.serverError() :: When attempting to render error page view, an error occured (sending JSON instead).  Details: ', err);
+        sails.log.warn('res.authorizationRequired() :: When attempting to render error page view, an error occured (sending JSON instead).  Details: ', err);
       }
       return res.jsonx(data);
     }
