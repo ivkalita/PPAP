@@ -1,4 +1,22 @@
 {
 	"bad-user-credentials": "Некорректные пользовательские данные!",
-	"server-error": "Произошла ошибка на сервере!"
+	"server-error": "Произошла ошибка на сервере!",
+
+	"ejs-login-caption": "Авторизация",
+	"ejs-login-login-label": "Логин",
+	"ejs-login-password-label": "Пароль",
+	"ejs-login-btn-enter": "Войти",
+
+	"ejs-signup-caption": "Регистрация",
+	"ejs-signup-login-label": "Логин",
+	"ejs-signup-password-label": "Пароль",
+	"ejs-signup-firstname-label": "Имя",
+	"ejs-signup-lastname-label": "Фамилия",
+	"ejs-signup-middlename-label": "Отчество",
+	"ejs-signup-btn-ok": "Зарегистрироваться",
+
+	"ejs-layout-alert-close": "Закрыть",
+	"ejs-layout-btn-login": "Войти",
+	"ejs-layout-btn-logout": "Выйти",
+	"ejs-layout-btn-signup": "Регистрация"
 }

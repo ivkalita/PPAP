@@ -54,7 +54,7 @@ module.exports.routes = {
     action: 'signup'
   },
 
-  'post /logout': {
+  '/logout': {
     controller: 'user',
     action: 'logout'
   },

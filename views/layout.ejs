@@ -39,6 +39,7 @@
     <!--SCRIPTS-->
     <script src="/js/dependencies/sails.io.js"></script>
     <script src="/js/dependencies/jquery-v1.11.2.min.js"></script>
+    <script src="/js/alerts.js"></script>
     <script src="/js/bootstrap.js"></script>
     <!--SCRIPTS END-->
   </head>
@@ -58,20 +59,36 @@
           <% if (req.session.hasOwnProperty('me')) { %>
             <p class="navbar-text"><%- req.session.me.firstName %></p>
             <a href = "/logout">
-              <button type="button" class="btn btn-success navbar-btn">Выйти</button>
+              <button type="button" class="btn btn-success navbar-btn"><%- Helper.translate(req, 'ejs-layout-btn-logout') %></button>
             </a>
           <% } else { %>
             <a href = "/login">
-              <button type="button" class="btn btn-success navbar-btn">Войти</button>
+              <button type="button" class="btn btn-success navbar-btn"><%- Helper.translate(req, 'ejs-layout-btn-login') %></button>
             </a>
             <a href = "/signup">
-              <button type="button" class="btn btn-success navbar-btn">Зарегистрироваться</button>
+              <button type="button" class="btn btn-success navbar-btn"><%- Helper.translate(req, 'ejs-layout-btn-signup') %></button>
             </a>
           <% } %>
         </div>
       </div>
     </div>
     <div class="container">
+    <div class = "row">
+      <div class="col-md-12">
+        <div class="alerts">
+          <div id="error-message-div" class="alert alert-danger" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label=<%- Helper.translate(req, 'ejs-layout-alert-close') %>><span aria-hidden="true">&times;</span></button>
+            <h4>Ошибка:</h4>
+            <h5 id="error-message"></h5>
+          </div>
+          <div id="success-message-div" class="alert alert-success" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label=<%- Helper.translate(req, 'ejs-layout-alert-close') %>><span aria-hidden="true">&times;</span></button>
+            <h4>Успешно:</h4>
+            <h5 id="success-message"></h5>
+          </div>
+        </div>
+      </div>
+    </div>
     <%- body %>
 
 

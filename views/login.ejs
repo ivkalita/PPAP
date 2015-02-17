@@ -1,11 +1,16 @@
-<script src="/linker/js/login.js"></script>
-<div class="jumbotron">
-	<form class="form-signin" role="form">
-		<h2 class="form-signin-heading">Авторизация</h2>
-		<label class="sr-only" for="login-text"></label>
-		<input id="login-text" class="form-control" type="text" autofocus="" required="true" placeholder="Логин"></input>
-		<label class="sr-only" for="password-text"></label>
-		<input id="password-text" class="form-control" type="password" required="true" placeholder="Пароль"></input>
-		<button class="btn btn-lg btn-success btn-block" id="btn-enter">Войти</button>
-	</form>
+<div class="row">
+	<div class="col-md-5 col-md-offset-4">
+		<form class="form-signin" role="form" action="/login" method="post">
+			<h2 class="form-signin-heading"><%- Helper.translate(req, 'ejs-login-caption') %></h2>
+			<div class="form-group">
+				<label class="sr-only" for="login-text"><%- Helper.translate(req, 'ejs-login-login-label') %></label>
+				<input id="login-text" name="login" class="form-control" type="text" autofocus="" required="true" placeholder=<%- Helper.translate('ejs-login-login-label') %>></input>
+			</div>
+			<div class="form-group">
+				<label class="sr-only" for="password-text"><%- Helper.translate(req, 'ejs-login-password-label') %></label>
+				<input id="password-text" name="password" class="form-control" type="password" required="true" placeholder=<%- Helper.translate(req, 'ejs-login-password-label') %>></input>
+			</div>
+			<button class="btn btn-lg btn-success btn-block" type="submit"><%- Helper.translate(req, 'ejs-login-btn-enter') %></button>
+		</form>
+	</div>
 </div>

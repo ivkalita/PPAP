@@ -1,4 +1,22 @@
 {
 	"bad-user-credentials": "Bad user credentials!",
-	"server-error": "Sorry! Server problems!"
+	"server-error": "Sorry! Server problems!",
+
+	"ejs-login-caption": "Sign in",
+	"ejs-login-login-label": "Login",
+	"ejs-login-password-label": "Password",
+	"ejs-login-btn-enter": "Log in",
+
+	"ejs-signup-caption": "Sign up",
+	"ejs-signup-login-label": "Login",
+	"ejs-signup-password-label": "Password",
+	"ejs-signup-firstname-label": "Name",
+	"ejs-signup-lastname-label": "Surname",
+	"ejs-signup-middlename-label": "Middle name",
+	"ejs-signup-btn-ok": "Sign up",
+
+	"ejs-layout-alert-close": "Close",
+	"ejs-layout-btn-login": "Login",
+	"ejs-layout-btn-logout": "Logout",
+	"ejs-layout-btn-signup": "Sign up"
 }

@@ -9,15 +9,13 @@ module.exports = {
 	login: function(req, res) { //метод для авторизации существующего пользователя
 		//проверим на валидность введенные данные (файл /api/services/Validator.js)
 		var valid = Validator.check(req.body, {
-			user: {
-				login: {
-					endpoint: true,
-					type: 'string'
-				},
-				password: {
-					endpoint: true,
-					type: 'string'
-				}
+			login: {
+				endpoint: true,
+				type: 'string'
+			},
+			password: {
+				endpoint: true,
+				type: 'string'
 			}
 		});
 		//если что-то не то, то сообщаем об этом пользователю
@@ -28,7 +26,11 @@ module.exports = {
 			return res.badRequest(Helper.translate(req, 'bad-user-credentials'));
 		}
 		//иначе, пробуем авторизоваться
-		User.login(req.body.user, function(err, user) {
+		var credentials = {
+			login: req.body.login,
+			password: req.body.password
+		}
+		User.login(credentials, function(err, user) {
 			if (err) {
 				sails.log.error('ST: ERROR: UserController.login(req, res)');
 				sails.log.error('User.login failed');
@@ -46,7 +48,7 @@ module.exports = {
 				middleName: user.middleName,
 				lastName: user.lastName
 			}
-			return res.ok();
+			return res.redirect('/');
 		});
 	},
 	logout: function(req, res) {
@@ -60,27 +62,25 @@ module.exports = {
 	signup: function(req, res) {
 		//проверяем на валидность введенные данные
 		var valid = Validator.check(req.body, {
-			user: {
-				login: {
-					endpoint: true,
-					type: 'string'
-				},
-				password: {
-					endpoint: true,
-					type: 'string'
-				},
-				firstName: {
-					endpoint: true,
-					type: 'string'
-				},
-				lastName: {
-					endpoint: true,
-					type: 'string'
-				},
-				middleName: {
-					endpoint: true,
-					type: 'string'
-				}
+			login: {
+				endpoint: true,
+				type: 'string'
+			},
+			password: {
+				endpoint: true,
+				type: 'string'
+			},
+			firstName: {
+				endpoint: true,
+				type: 'string'
+			},
+			lastName: {
+				endpoint: true,
+				type: 'string'
+			},
+			middleName: {
+				endpoint: true,
+				type: 'string'
 			}
 		});
 		if (valid.err) {
@@ -90,7 +90,14 @@ module.exports = {
 			return res.badRequest(Helper.translate(req, 'bad-user-credentials'));
 		}
 		//пытаемся зарегистрировать нового пользователя
-		User.signup(req.body.user, function(err, user) {
+		var credentials = {
+			login: req.body.login,
+			password: req.body.password,
+			firstName: req.body.firstName,
+			lastName: req.body.lastName,
+			middleName: req.body.middleName
+		}
+		User.signup(credentials, function(err, user) {
 			//тут отловим системные ошибки
 			if (err) {
 				sails.log.error('ST ERROR: UserController.signup(req, res)');

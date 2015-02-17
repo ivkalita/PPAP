@@ -1,4 +1,5 @@
 var url = '/signup';
+var messages = new Alert();
 $(function() {
 	$('#btn-ok').click(function(event) {
 		event.preventDefault();
@@ -9,9 +10,9 @@ $(function() {
 			lastName: $('#lastname-text').val(),
 			middleName: $('#middlename-text').val()
 		}
-		io.socket.post(url, {user: credentials}, function(data, jwres) {
+		io.socket.post(url, credentials, function(data, jwres) {
 			if (jwres.statusCode !== 200) {
-				alert(data);
+				messages.error(data);
 				exit;
 			}
 			//redirect to main page
