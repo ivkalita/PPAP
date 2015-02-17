@@ -59,6 +59,11 @@ module.exports.routes = {
     action: 'logout'
   },
 
+  'get /locale': {
+    controller: 'user',
+    action: 'locale'
+  },
+
   'get /test': {
     controller: 'main',
     action: 'test'

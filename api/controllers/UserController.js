@@ -121,6 +121,10 @@ module.exports = {
 			}
 			return res.redirect('/');
 		});
+	},
+	locale: function(req, res) {
+		req.session.locale = req.param('locale');
+		return res.redirect('/');
 	}
 };
 
