@@ -1,3 +1,4 @@
+<script src="/linker/js/login.js"></script>
 <div class="row">
 	<div class="col-md-5 col-md-offset-4">
 		<form class="form-signin" role="form" action="/login" method="post">
@@ -10,7 +11,7 @@
 				<label class="sr-only" for="password-text"><%- Helper.translate(req, 'ejs-login-password-label') %></label>
 				<input id="password-text" name="password" class="form-control" type="password" required="true" placeholder=<%- Helper.translate(req, 'ejs-login-password-label') %>></input>
 			</div>
-			<button class="btn btn-lg btn-success btn-block" type="submit"><%- Helper.translate(req, 'ejs-login-btn-enter') %></button>
+			<button id="btn-enter" class="btn btn-lg btn-success btn-block" type="submit"><%- Helper.translate(req, 'ejs-login-btn-enter') %></button>
 		</form>
 	</div>
 </div>

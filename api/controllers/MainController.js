@@ -6,32 +6,32 @@
  */
 
 module.exports = {
-	test: function(req, res) {
-		//sails.log.info
-		//sails.log.error
-		//sails.log.silly
-		//sails.log.debug
-		// sails.log.info(req);
-		// sails.log.info('------------------');
-		// sails.log.info(res);
-		//return res.view('homepage');
-		//return res.redirect('www.google.ru');
-		//res.ok()
-		return res.view('testSignup');
-		//res.serverError();
-		//res.badRequest();
-		// return res.ok('Hello world');
-	},
-	insertUser: function(req, res) {
-		var elem = req.body.elem;
-		User.create({login: elem.login}, function(err, user) {
-			if (err) {
-				sails.log.error(err);
-				return res.serverError(err);
+	news: function(req, res) {
+		var id = req.param('id'),
+			criteria = {}
+		;
+		if (typeof(id) === 'undefined' || id == null) {
+			criteria = {};
+		} else {
+			criteria = {
+				id: id
 			}
-			return res.ok({user: user.id});		
-		});
+		}
+		News.find(criteria)
+			.sort({createdAt: 'desc'})
+			.exec(function(err, news) {
+				if (err) {
+					sails.log.error('ST >>ERROR: MainController.news()');
+					sails.log.error(err);
+					return res.serverError();
+				}
+				return res.view('main/news.ejs', {news: news});
+			});
+	},
+
+	home: function(req, res) {
+		sails.controllers.main.news(req, res);
 	}
-	
+		
 };
 

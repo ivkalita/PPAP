@@ -46,9 +46,10 @@ module.exports = {
 				id: user.id,
 				firstName: user.firstName,
 				middleName: user.middleName,
-				lastName: user.lastName
+				lastName: user.lastName,
+				isAdmin: user.isAdmin
 			}
-			return res.redirect('/');
+			return res.ok();
 		});
 	},
 	logout: function(req, res) {

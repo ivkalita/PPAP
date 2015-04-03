@@ -1,0 +1,33 @@
+<% if (news.length > 0) { %>
+	<div class="row">
+		<div class="col-md-10 col-md-offset-1 container content-column">
+			<% for (var i = 0; i < news.length; i++) { %>
+				<div class="row">
+					<div class="col-md-12">
+						<div class="row">
+							<div class="col-md-9 news-preview">
+								<h2><a href="/news?id=<%= news[i].id%>"><%= news[i].title %></a></h2>
+								<h4><%= news[i].createdAt %></h4>
+								<% if (typeof(news[i].mainImg) !== 'undefined' && news[i].mainImg !== null) { %>
+									<img src="<%= news[i].mainImg.path %>">
+								<% } %>
+								<%= news[i].description %>								
+							</div>
+							<div class="col-md-3">
+								<button class="edit-btn btn btn-success" data-id="<%= news[i].id %>">Редактировать</button>
+								<button class="delete-btn btn btn-success" data-id="<%= news[i].id %>">Удалить</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			<% } %>
+		</div>
+	</div>
+<% } %>
+<div class="row">
+	<div class="col-md-7 col-md-offset-3 btns-column">
+		<button id="add-news" class="btn btn-success">Добавить новость</button>
+	</div>
+</div>
+
+<script src="/linker/js/news.js"></script>

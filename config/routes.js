@@ -21,67 +21,102 @@
  */
 module.exports.routes = {
 
-  /***************************************************************************
-  *                                                                          *
-  * Make the view located at `views/homepage.ejs` (or `views/homepage.jade`, *
-  * etc. depending on your default view engine) your home page.              *
-  *                                                                          *
-  * (Alternatively, remove this and add an `index.html` file in your         *
-  * `assets` directory)                                                      *
-  *                                                                          *
-  ***************************************************************************/
+	/***************************************************************************
+	*                                                                          *
+	* Make the view located at `views/homepage.ejs` (or `views/homepage.jade`, *
+	* etc. depending on your default view engine) your home page.              *
+	*                                                                          *
+	* (Alternatively, remove this and add an `index.html` file in your         *
+	* `assets` directory)                                                      *
+	*                                                                          *
+	***************************************************************************/
 
-  '/': {
-    view: 'homepage'
-  },
+	'/': {
+		controller: 'main',
+		action: 'home'
+	},
 
-  //USER
-  'get /login': {
-    view: 'login'
-  },
+	//USER
+	'get /login': {
+		view: 'login'
+	},
 
-  'get /signup': {
-    view: 'signup'
-  },
+	'get /signup': {
+		view: 'signup'
+	},
 
-  'post /login': {
-    controller: 'user',
-    action: 'login'
-  },
+	'post /login': {
+		controller: 'user',
+		action: 'login'
+	},
 
-  'post /signup': {
-    controller: 'user',
-    action: 'signup'
-  },
+	'post /signup': {
+		controller: 'user',
+		action: 'signup'
+	},
 
-  '/logout': {
-    controller: 'user',
-    action: 'logout'
-  },
+	'/logout': {
+		controller: 'user',
+		action: 'logout'
+	},
 
-  'get /locale': {
-    controller: 'user',
-    action: 'locale'
-  },
+	'get /locale': {
+		controller: 'user',
+		action: 'locale'
+	},
 
-  'get /test': {
-    controller: 'main',
-    action: 'test'
-  },
+	'get /news': {
+		controller: 'main',
+		action: 'news'
+	},
 
-  'post /test': {
-    controller: 'main',
-    action: 'insertUser'
-  }
+	'get /admin': {
+		controller: 'admin',
+		action: 'index'
+	},
 
-  /***************************************************************************
-  *                                                                          *
-  * Custom routes here...                                                    *
-  *                                                                          *
-  *  If a request to a URL doesn't match any of the custom routes above, it  *
-  * is matched against Sails route blueprints. See `config/blueprints.js`    *
-  * for configuration options and examples.                                  *
-  *                                                                          *
-  ***************************************************************************/
+	'get /admin/news': {
+		controller: 'news',
+		action: 'index'
+	},
+
+	'/admin/news/ckeditor/image/upload': {
+		controller: 'news',
+		action: 'ckeditorImageUpload'
+	},
+
+	'get /admin/news/new': {
+		controller: 'news',
+		action: 'new'
+	},
+
+	'post /admin/news/new': {
+		controller: 'news',
+		action: 'insert'
+	},
+
+	'post /admin/news/delete': {
+		controller: 'news',
+		action: 'delete'
+	},
+
+	'post /admin/news/update': {
+		controller: 'news',
+		action: 'update'
+	},
+
+	'get /admin/news/edit': {
+		controller: 'news',
+		action: 'edit'
+	},
+	/***************************************************************************
+	*                                                                          *
+	* Custom routes here...                                                    *
+	*                                                                          *
+	*  If a request to a URL doesn't match any of the custom routes above, it  *
+	* is matched against Sails route blueprints. See `config/blueprints.js`    *
+	* for configuration options and examples.                                  *
+	*                                                                          *
+	***************************************************************************/
 
 };

@@ -6,7 +6,7 @@
     <!-- Viewport mobile tag for sensible mobile support -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    <link href='http://fonts.googleapis.com/css?family=Yeseva+One&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Yeseva+One&amp;subset=latin,cyrillic' rel='stylesheet' type='text/css'>
     <!--STYLES-->
     <link rel="stylesheet" href="/styles/bootstrap-theme.css">
     <link rel="stylesheet" href="/styles/bootstrap.css">
@@ -23,6 +23,7 @@
     <!--SCRIPTS END-->
     <script src="/linker/js/bootstrap-select.min.js"></script>
     <script src="/linker/js/interface.js"></script>
+    <script src="/linker/js/ckeditor-fix.js"></script>
   </head>
 
   <body>
@@ -34,9 +35,12 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
           </button>
-            <a class="navbar-brand" href = "/">Тут логотип</a>
+          <a class="navbar-brand" href = "/">Тут логотип</a> 
         </div>
         <div class="navbar-right">
+          <% if (req.session.hasOwnProperty('me') && req.session.me.isAdmin) {%>
+            <button type="button" class="btn btn-success navbar-btn" id="admin-enter"><a href="/admin">SETTINGS</a></button>
+          <% } %>
           <select id="locale-select" class="selectpicker">
             <option 
               <% if (req.session.hasOwnProperty('locale') && req.session.locale == 'en') { %>
@@ -69,12 +73,12 @@
       <div class = "row">
         <div class="col-md-12">
           <div class="alerts">
-            <div id="error-message-div" class="alert alert-danger" role="alert">
+            <div id="error-message-div" class="alert alert-danger hidden" role="alert">
               <button type="button" class="close" data-dismiss="alert" aria-label=<%- Helper.translate(req, 'ejs-layout-alert-close') %>><span aria-hidden="true">&times;</span></button>
               <h4>Ошибка:</h4>
               <h5 id="error-message"></h5>
             </div>
-            <div id="success-message-div" class="alert alert-success" role="alert">
+            <div id="success-message-div" class="alert alert-success hidden" role="alert">
               <button type="button" class="close" data-dismiss="alert" aria-label=<%- Helper.translate(req, 'ejs-layout-alert-close') %>><span aria-hidden="true">&times;</span></button>
               <h4>Успешно:</h4>
               <h5 id="success-message"></h5>

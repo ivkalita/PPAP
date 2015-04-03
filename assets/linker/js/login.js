@@ -6,7 +6,7 @@ $(function() {
 			login: $('#login-text').val(),
 			password: $('#password-text').val()
 		}
-		io.socket.post(url, {user: credentials}, function(data, jwres) {
+		io.socket.post(url, credentials, function(data, jwres) {
 			if (jwres.statusCode !== 200) {
 				alert(data);
 				return;

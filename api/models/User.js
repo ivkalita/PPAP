@@ -35,6 +35,10 @@ module.exports = {
         password: {
             type: 'string',
             required: true
+        },
+        isAdmin: {
+            type: 'integer',
+            required: true
         }
 	},
 	//метод для регистрации нового пользователя
@@ -76,7 +80,8 @@ module.exports = {
                         firstName: credentials.firstName,
                         lastName: credentials.lastName,
                         middleName: credentials.middleName,
-                        password: hash
+                        password: hash,
+                        isAdmin: 0
                     }, function(err, user) {
                         if (err) {
                             sails.log.error('ST: >>ERROR: User.signup(credentials, cb)');
@@ -91,7 +96,7 @@ module.exports = {
     },
     login: function(credentials, cb) {
         var bcrypt = require('bcrypt');
-        var user = User.findOne({login: credentials.login}, function(err, user) {
+        User.findOne({login: credentials.login}, function(err, user) {
             if (err) {
                 sails.log.error('ST: >>ERROR: User.login(credentials, cb)');
                 sails.log.error('User.findOne failed()');

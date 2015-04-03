@@ -1,0 +1,27 @@
+<% if (news.length > 0) { %>
+	<div class="row">
+		<div class="col-md-8 col-md-offset-2 container content-column">
+			<% for (var i = 0; i < news.length; i++) { %>
+				<div class="row">
+					<% if (news.length > 1) { %>
+						<div class="col-md-12 news-preview">
+							<h2><a href="/news?id=<%= news[i].id %>"><%= news[i].title %></a></h2>
+							<h4><%= news[i].createdAt %></h4>
+							<% if (typeof(news[i].mainImg) !== 'undefined' && news[i].mainImg !== null) { %>
+								<img src="<%= news[i].mainImg.path %>">
+							<% } %>
+							<p><%= news[i].description %></p>
+						</div>
+					<% } else { %>
+						<div class="col-md-12">
+							<h2><%= news[i].title %></h2>
+							<h4><%= news[i].createdAt %></h4>
+							<%= news[i].description %>
+							<%- news[i].text %>
+						</div>
+					<% } %>
+				</div>
+			<% } %>
+		</div>
+	</div>
+<% } %>
