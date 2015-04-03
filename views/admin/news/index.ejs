@@ -11,7 +11,7 @@
 								<% if (typeof(news[i].mainImg) !== 'undefined' && news[i].mainImg !== null) { %>
 									<img src="<%= news[i].mainImg.path %>">
 								<% } %>
-								<%= news[i].description %>								
+								<%= news[i].description %>
 							</div>
 							<div class="col-md-3">
 								<button class="edit-btn btn btn-success" data-id="<%= news[i].id %>">Редактировать</button>
@@ -26,8 +26,11 @@
 <% } %>
 <div class="row">
 	<div class="col-md-7 col-md-offset-3 btns-column">
-		<button id="add-news" class="btn btn-success">Добавить новость</button>
+		<button id="add-btn" class="btn btn-success">Добавить новость</button>
 	</div>
 </div>
 
+<%- partial('card.ejs') %>
+
+<script src="/linker/ckeditor/ckeditor.js"></script>
 <script src="/linker/js/news.js"></script>

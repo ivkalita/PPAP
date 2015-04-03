@@ -13,7 +13,7 @@ $(function() {
 		io.socket.post(url, credentials, function(data, jwres) {
 			if (jwres.statusCode !== 200) {
 				messages.error(data);
-				exit;
+				return;
 			}
 			//redirect to main page
 			window.location.replace('/');

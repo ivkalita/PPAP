@@ -25,13 +25,12 @@ module.exports = {
 					sails.log.error(err);
 					return res.serverError();
 				}
-				return res.view('main/news.ejs', {news: news});
+				return res.view('main/news.ejs', {news: news, onlyOne: id ? true : false});
 			});
 	},
 
 	home: function(req, res) {
 		sails.controllers.main.news(req, res);
 	}
-		
 };
 

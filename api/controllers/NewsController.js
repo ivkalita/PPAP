@@ -18,30 +18,15 @@ module.exports = {
 			});
 	},
 
-	'new': function(req, res) {
-		return res.view('admin/news/new.ejs');
-	},
-
-	insert: function(req, res) {
+	create: function(req, res) {
 		News.create(req.body, function(err, news) {
 			if (err) {
-				sails.log.error('ST >>ERROR: NewsController.insert()');
+				sails.log.error('ST >>ERROR: NewsController.create()');
 				sails.log.error(err);
 				return res.serverError();
 			}
 			return res.ok();
 		});
-	},
-
-	delete: function(req, res) {
-		News.destroy({id: req.body.id}, function(err) {
-			if (err) {
-				sails.log.error('ST >>ERROR: NewsController.delete()');
-				sails.log.error(err);
-				return res.serverError();
-			}
-			return res.ok();
-		})
 	},
 
 	update: function(req, res) {
@@ -55,17 +40,32 @@ module.exports = {
 		});
 	},
 
-	edit: function(req, res) {
-		News.find({id: req.param('id')}, function(err, news) {
+	destroy: function(req, res) {
+		News.destroy({id: req.body.id}, function(err) {
 			if (err) {
-				sails.log.error('ST >>ERROR: NewsController.edit()');
+				sails.log.error('ST >>ERROR: NewsController.destroy()');
 				sails.log.error(err);
 				return res.serverError();
 			}
-			news[0].text = escape(news[0].text);
-			news[0].description = escape(news[0].description);
-			return res.view('admin/news/card.ejs', {news: news[0]});
-		});
+			return res.ok();
+		})
+	},
+
+	get: function(req, res) {
+		News.find({id: req.body.id})
+			.exec(function(err, news) {
+				if (err) {
+					sails.log.error('ST >>ERROR: NewsController.get()');
+					sails.log.error(err);
+					return res.serverError();
+				}
+				if (news.length < 1) {
+					sails.log.warn('ST >>WARN: NewsController.get()');
+					sails.log.warn('id =', req.body.id, 'news count =', news.length);
+					return res.badRequest();
+				}
+				return res.ok(news[0]);
+			});
 	},
 
 	ckeditorImageUpload: function(req, res) {
@@ -88,10 +88,10 @@ module.exports = {
 			html += "    var message = \"Uploaded file successfully\";";
 			html += "";
 			html += "    window.parent.CKEDITOR.tools.callFunction(funcNum, url, message);";
-			html += "</script>";			
+			html += "</script>";
 			res.send(html);
 		});
 	}
-	
+
 };
 

@@ -65,15 +65,12 @@ module.exports.routes = {
 		action: 'locale'
 	},
 
-	'get /news': {
-		controller: 'main',
-		action: 'news'
-	},
-
 	'get /admin': {
 		controller: 'admin',
 		action: 'index'
 	},
+
+//admin news
 
 	'get /admin/news': {
 		controller: 'news',
@@ -85,19 +82,9 @@ module.exports.routes = {
 		action: 'ckeditorImageUpload'
 	},
 
-	'get /admin/news/new': {
+	'post /admin/news/create': {
 		controller: 'news',
-		action: 'new'
-	},
-
-	'post /admin/news/new': {
-		controller: 'news',
-		action: 'insert'
-	},
-
-	'post /admin/news/delete': {
-		controller: 'news',
-		action: 'delete'
+		action: 'create'
 	},
 
 	'post /admin/news/update': {
@@ -105,10 +92,20 @@ module.exports.routes = {
 		action: 'update'
 	},
 
-	'get /admin/news/edit': {
+	'post /admin/news/destroy': {
 		controller: 'news',
-		action: 'edit'
+		action: 'destroy'
 	},
+
+	'get /admin/news/get': {
+		controller: 'news',
+		action: 'get'
+	},
+
+	'get /news': {
+		controller: 'main',
+		action: 'news'
+	}
 	/***************************************************************************
 	*                                                                          *
 	* Custom routes here...                                                    *

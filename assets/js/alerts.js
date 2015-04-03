@@ -19,3 +19,5 @@ $(function() {
 	$('#error-message-div').hide();
 	$('#success-message-div').hide();
 });
+
+var messages = new Alert();

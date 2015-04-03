@@ -89,6 +89,7 @@ module.exports = {
                             cb(null, null);
                             return;
                         }
+                        cb(null, user);
                     });
                 });
             });

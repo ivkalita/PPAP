@@ -14,7 +14,8 @@ module.exports.bootstrap = function(cb) {
 	// It's very important to trigger this callback method when you are finished
 	// with the bootstrap!  (otherwise your server will never lift, since it's waiting on the bootstrap)
 	var exec = require('child_process').exec;
-	var child = exec('ln -s ' + process.cwd() + '/uploads/ assets/uploads', function(error, stdout, stderr) {
+	console.log(process.cwd());
+	var child = exec('ln -s ' + process.cwd() + '/uploads/ ' + process.cwd() + '/assets/uploads', function(error, stdout, stderr) {
 		console.log(error);
 		console.log(stdout);
 		console.log(stderr);

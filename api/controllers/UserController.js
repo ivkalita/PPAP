@@ -120,9 +120,10 @@ module.exports = {
 				middleName: user.middleName,
 				lastName: user.lastName
 			}
-			return res.redirect('/');
+			return res.ok();
 		});
 	},
+
 	locale: function(req, res) {
 		req.session.locale = req.param('locale');
 		return res.redirect('/');

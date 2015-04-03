@@ -4,6 +4,11 @@
 	position: relative;
 }
 
+.navbar-inverse {
+	background-color: #012340 !important;
+	background-image: none !important;
+}
+
 .in-da-middle {
 	font-family: 'Yeseva One', cursive;
 	text-align: center;
@@ -14,7 +19,13 @@
 }
 
 .btn-success {
-	background-color: #152623;
+	background-color: #0487D9 !important;
+	border: 1px solid #000 !important;
+}
+
+.btn-success:hover {
+	background-color: #03588C !important;
+	border: 1px solid #03588C !important;
 }
 
 .main-text {
@@ -22,7 +33,7 @@
 }
 
 body {
-	background-color: #FFF;
+	background-color: #EEE;
 	padding-top: 70px;
 }
 
@@ -33,8 +44,18 @@ div.alerts {
 }
 
 div.news-preview {
-	border-bottom: 1px solid #AAA;
+	/*padding-left: 10px;*/
+	/*margin-right: 10px;*/
+	margin-top: 10px;
+	width: 95%;
+	left: 2.5%;
+	overflow: hidden;
+	position: relative;
 	padding-bottom: 20px;
+	background-color: #EEFFFF;
+	-webkit-box-shadow: 8px 5px 17px 0px rgba(50, 50, 50, 0.85);
+	-moz-box-shadow:    8px 5px 17px 0px rgba(50, 50, 50, 0.85);
+	box-shadow:         8px 5px 17px 0px rgba(50, 50, 50, 0.85);
 }
 
 div.news-preview h4 {
@@ -56,7 +77,24 @@ div.news-preview::after {
 }
 
 div.content-column {
-	background-color: #B4D9CE;
+	/*background-color: #EDFDFD;*/
+	min-height: 100vh;
+	color: #012340;
+	background-image: -webkit-gradient(
+		linear,
+		left top,
+		left bottom,
+		color-stop(0, #FFFFFF),
+		color-stop(1, #C9FFFF)
+	);
+	background-image: -o-linear-gradient(bottom, #FFFFFF 0%, #C9FFFF 100%);
+	background-image: -moz-linear-gradient(bottom, #FFFFFF 0%, #C9FFFF 100%);
+	background-image: -webkit-linear-gradient(bottom, #FFFFFF 0%, #C9FFFF 100%);
+	background-image: -ms-linear-gradient(bottom, #FFFFFF 0%, #C9FFFF 100%);
+	background-image: linear-gradient(to bottom, #FFFFFF 0%, #C9FFFF 100%);
+	-webkit-box-shadow: 0px 0px 26px 0px rgba(50, 50, 50, 1);
+	-moz-box-shadow:    0px 0px 26px 0px rgba(50, 50, 50, 1);
+	box-shadow:         0px 0px 26px 0px rgba(50, 50, 50, 1);
 }
 
 #locale-select {
@@ -81,5 +119,4 @@ a:hover {
 
 #news-card {
 	position: absolute;
-	
 }
