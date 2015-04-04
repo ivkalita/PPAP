@@ -18,5 +18,9 @@
 	"ejs-layout-alert-close": "Закрыть",
 	"ejs-layout-btn-login": "Войти",
 	"ejs-layout-btn-logout": "Выйти",
-	"ejs-layout-btn-signup": "Регистрация"
+	"ejs-layout-btn-signup": "Регистрация",
+	"ejs-layout-btn-admin": "Панель",
+	"ejs-layout-title": "ППАП",
+
+	"ejs-news-title": "Новости"
 }

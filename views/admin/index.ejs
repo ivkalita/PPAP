@@ -2,8 +2,20 @@
 	<div class="col-md-7 col-md-offset-3 container content-column">
 		<table class="admin-tools">
 			<tr>
-				<td><a href="/admin/news">Управление новостями</a></td>
+				<td id="news-btn" class="admin-control-btn">Управление новостями</td>
+				<td id="users-btn" class="admin-control-btn">Управление пользователями</td>
 			</tr>
 		</table>
 	</div>
 </div>
+
+<script>
+	$(function() {
+		$('#news-btn').click(function() {
+			window.location.replace('/admin/news');
+		});
+		$('#users-btn').click(function() {
+			window.location.replace('/admin/users')
+		});
+	});
+</script>

@@ -34,7 +34,7 @@
 
 body {
 	background-color: #EEE;
-	padding-top: 70px;
+	padding-top: 60px;
 }
 
 div.alerts {
@@ -53,14 +53,36 @@ div.news-preview {
 	position: relative;
 	padding-bottom: 20px;
 	background-color: #EEFFFF;
+    -webkit-transition: all 0.5s linear;
+    -o-transition: all 0.5s linear;
+    -moz-transition: all 0.5s linear;
+    -ms-transition: all 0.5s linear;
+    -kthtml-transition: all 0.5s linear;
+    transition: all 0.5s linear;
+    cursor: pointer;
+}
+
+div.news-preview:hover {
 	-webkit-box-shadow: 8px 5px 17px 0px rgba(50, 50, 50, 0.85);
 	-moz-box-shadow:    8px 5px 17px 0px rgba(50, 50, 50, 0.85);
 	box-shadow:         8px 5px 17px 0px rgba(50, 50, 50, 0.85);
+	margin-left: 10px;
 }
 
-div.news-preview h4 {
+div.news-content {
+	overflow: hidden;
+	padding: 20px;
+	border-top: 1px solid #BBB;
+}
+
+div.news-preview > h2 {
+	color: #0487D9;
+}
+
+div.news-preview h4, div.news-header > h4 {
 	color: #777;
 	font-family: cursive;
+	font-size: 14px;
 	font-weight: 300;
 }
 
@@ -78,7 +100,9 @@ div.news-preview::after {
 
 div.content-column {
 	/*background-color: #EDFDFD;*/
-	min-height: 100vh;
+	margin-bottom: 20px;
+	min-height: 85vh;
+	padding: 20px;
 	color: #012340;
 	background-image: -webkit-gradient(
 		linear,
@@ -119,4 +143,20 @@ a:hover {
 
 #news-card {
 	position: absolute;
+}
+
+div.main-info {
+	min-height: 80px;
+	text-align: center;
+	background-color: #0487D9;
+	color: #C9FFFF;
+	margin-bottom: 10px;
+	vertical-align: middle;
+}
+
+div.main-info img {
+	position: absolute;
+	top: 0px;
+	left: 10px;
+	width: 77px;
 }

@@ -7,14 +7,29 @@
 
 module.exports = {
 	index: function(req, res) {
+		var page = req.param('page') || 1; 
 		News.find()
 			.sort({createdAt: 'desc'})
+			.paginate({page: page, limit: 10})
 			.exec(function(err, news) {
 				if (err) {
-					sails.log.error('ST WARN: NewsController.index()');
+					sails.log.error('ST >>ERROR: NewsController.news()');
+					sails.log.error(err);
 					return res.serverError();
 				}
-				return res.view('admin/news/index.ejs', {news: news});
+				News.count().exec(function(err, cnt) {
+					if (err) {
+						sails.log.error('ST >>ERROR: NewsController.news()');
+						sails.log.error(err);
+						return res.serverError;
+					}
+					var pageCnt = cnt % 10 === 0 ? cnt / 10 : (cnt - cnt % 10) / 10 + 1;
+					return res.view('admin/news/index.ejs', {
+						news: news,
+						page: parseInt(page),
+						pageCnt: pageCnt
+					});
+				});
 			});
 	},
 

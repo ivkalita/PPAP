@@ -8,7 +8,8 @@
 module.exports = {
 	news: function(req, res) {
 		var id = req.param('id'),
-			criteria = {}
+			criteria = {},
+			page = req.param('page') || 1
 		;
 		if (typeof(id) === 'undefined' || id == null) {
 			criteria = {};
@@ -19,13 +20,27 @@ module.exports = {
 		}
 		News.find(criteria)
 			.sort({createdAt: 'desc'})
+			.paginate({page: page, limit: 10})
 			.exec(function(err, news) {
 				if (err) {
 					sails.log.error('ST >>ERROR: MainController.news()');
 					sails.log.error(err);
 					return res.serverError();
 				}
-				return res.view('main/news.ejs', {news: news, onlyOne: id ? true : false});
+				News.count().exec(function(err, cnt) {
+					if (err) {
+						sails.log.error('ST >>ERROR: MainController.news()');
+						sails.log.error(err);
+						return res.serverError;
+					}
+					var pageCnt = cnt % 10 === 0 ? cnt / 10 : (cnt - cnt % 10) / 10 + 1;
+					return res.view('main/news.ejs', {
+						news: news,
+						onlyOne: id ? true : false,
+						page: parseInt(page),
+						pageCnt: pageCnt
+					});
+				});
 			});
 	},
 

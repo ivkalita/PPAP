@@ -18,5 +18,9 @@
 	"ejs-layout-alert-close": "Close",
 	"ejs-layout-btn-login": "Login",
 	"ejs-layout-btn-logout": "Logout",
-	"ejs-layout-btn-signup": "Sign up"
+	"ejs-layout-btn-signup": "Sign up",
+	"ejs-layout-btn-admin": "Admin Toolbar",
+	"ejs-layout-title": "PPAP",
+
+	"ejs-news-title": "News"
 }

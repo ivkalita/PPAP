@@ -1,0 +1,40 @@
+table.admin-tools {
+	width: 80%;
+	margin: 0 auto;
+	margin-top: 15px;
+	border-collapse: separate;
+	border-spacing: 20px;
+}
+
+table.admin-tools td.admin-control-btn {
+	background-color: #EEFFFF;
+    -webkit-transition: all 0.5s linear;
+    -o-transition: all 0.5s linear;
+    -moz-transition: all 0.5s linear;
+    -ms-transition: all 0.5s linear;
+    -kthtml-transition: all 0.5s linear;
+    transition: all 0.5s linear;
+    height: 50px;
+    padding: 5px;
+    border: 1px solid #0487D9;
+    color: #0487D9;
+    cursor: pointer;
+    text-align: center;
+}
+
+table.admin-tools td.admin-control-btn:hover {
+	-webkit-box-shadow: 8px 5px 17px 0px rgba(50, 50, 50, 0.85);
+	-moz-box-shadow:    8px 5px 17px 0px rgba(50, 50, 50, 0.85);
+	box-shadow:         8px 5px 17px 0px rgba(50, 50, 50, 0.85);
+	margin-left: 10px;	
+}
+
+div.btns {
+	position: relative;
+	padding-top: 20px;
+}
+
+div.btns button {
+	width: 50px;
+	margin-bottom: 5px;
+}
