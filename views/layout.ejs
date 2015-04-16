@@ -8,7 +8,6 @@
 
     <link href='http://fonts.googleapis.com/css?family=Yeseva+One&amp;subset=latin,cyrillic' rel='stylesheet' type='text/css'>
     <!--STYLES-->
-    <link rel="stylesheet" href="/styles/admin.css">
     <link rel="stylesheet" href="/styles/bootstrap-theme.css">
     <link rel="stylesheet" href="/styles/bootstrap.css">
     <link rel="stylesheet" href="/styles/custom.css">
@@ -55,7 +54,7 @@
             value="ru">Ru</option>
           </select>
           <% if (req.session.hasOwnProperty('me')) { %>
-            <p class="navbar-text"><%- req.session.me.firstName %></p>
+            <a class="navbar-text" href="/profile"><%- req.session.me.firstName %></a>
             <a href = "/logout">
               <button type="button" class="btn btn-success navbar-btn"><span class="glyphicon glyphicon-log-out"> <%- Helper.translate(req, 'ejs-layout-btn-logout') %></span></button>
             </a>

@@ -1,0 +1,23 @@
+<div class="modal fade" id="publication-card" data-url="/profile/publication" tabindex="-1" role="dialog" aria-labelledby="publication-card-label" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title" id="publication-card-label"><%- Helper.translate(req, 'ejs-publication-card-label') %></h4>
+			</div>
+			<div class="modal-body">
+				<form>
+					<div class="form-group">
+						<label class="form-control" for="publication-card-info-text"><%- Helper.translate(req, 'ejs-publication-card-info-text') %></label>
+						<input class="form-control" data-attr="info" type="text" id="publication-card-info-text" />
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default cancel" data-type="publication" data-attr="id" data-dismiss="modal"><%- Helper.translate(req, 'ejs-btn-cancel') %></button>
+				<button type="button" class="btn btn-primary delete" data-type="publication" data-attr="id"><%- Helper.translate(req, 'ejs-btn-delete') %></button>
+				<button type="button" class="btn btn-primary save" data-type="publication" data-attr="id"><%- Helper.translate(req, 'ejs-btn-save') %></button>
+			</div>
+		</div>
+	</div>
+</div>

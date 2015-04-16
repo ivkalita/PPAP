@@ -1,0 +1,70 @@
+<link href="/linker/styles/profile.css" rel="stylesheet">
+
+<div class="row">
+	<div class="col-md-8 col-md-offset-2 container content-column">
+		<div class="row">
+			<div class="col-md-12 user-name">
+				<h2><%= user.firstName %> <%= user.middleName %> <%= user.lastName %></h2>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-4">
+				<% if (user.avatar) { %>
+					<img src="<%= user.avatar %>" class="avatar">
+				<% } else { %>
+					<img src="/images/noavatar.png" class="avatar">
+				<% } %>
+			</div>
+			<div class="col-md-8 container">
+				<% if (user.birthday) { %>
+					<div class="row">
+						<div class="col-md-12">
+							<p><span class="prompt"><%- Helper.translate(req, 'ejs-profile-birthday') %></span>: <span class="prompted-info"><%- Helper.convertDate(req, user.birthday, 'date') %></span></p>
+						</div>
+					</div>
+				<% } %>
+				<% if (user.education !== null && user.education.length > 0) { %>
+					<div class="row">
+						<div class="col-md-12 container">
+							<div class="row">
+								<div class="col-md-10">
+									<h3 class="array-prompt"><%- Helper.translate(req, 'ejs-profile-education') %></h3>
+								</div>
+							</div>
+							<% for (var i = 0; i < user.education.length; i++) { %>
+								<div class="row">
+									<div class="col-md-12 array-item container">
+										<h4><%= user.education[i].place %></h4>
+										<h4><%= user.education[i].info %></h4>
+									</div>
+								</div>
+							<% } %>
+						</div>
+					</div>
+				<% } %>
+				<% if (user.work !== null && user.work.length > 0) { %>
+					<div class="row">
+						<div class="col-md-12 container">
+							<div class="row">
+								<div class="col-md-10">
+									<h3 class="array-prompt"><%- Helper.translate(req, 'ejs-profile-work') %></h3>
+								</div>
+								<% for (var i = 0; i < user.work.length; i++) { %>
+									<div class="row">
+										<div class="col-md-12 array-item container">
+											<h4><%= user.work[i].place %></h4>
+											<h4><%= user.work[i].rank %></h4>
+											<h4><%- Helper.translate(req, user.work[i].startedAt, 'date') %></h4>
+											<h4><%- Helper.translate(req, user.work[i].endedAt, 'date') %></h4>
+										</div>
+									</div>
+								<% } %>
+							</div>
+						</div>
+					</div>
+				<% } %>
+			</div>
+		</div>
+		bla-bla-bla
+	</div>
+</div>

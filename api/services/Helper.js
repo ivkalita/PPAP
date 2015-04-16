@@ -18,12 +18,23 @@ module.exports = {
 		});
 	},
 
-	convertDate: function(req, date) {
+	convertDate: function(req, date, type) {
 		var locale = Helper.getLocale(req);
-		if (locale === 'en') {
-			return moment(date).format('MM.DD.YYYY, HH:mm');
-		} else {
-			return moment(date).format('DD.MM.YYYY, HH:mm');
+		type = type || 'date-time';
+		if (type === 'date-time') {
+			if (locale === 'en') {
+				return moment(date).format('MM.DD.YYYY, HH:mm');
+			} else {
+				return moment(date).format('DD.MM.YYYY, HH:mm');
+			}
+		} else if (type === 'date') {
+			if (locale === 'en') {
+				return moment(date).format('MM.DD.YYYY');
+			} else {
+				return moment(date).format('DD.MM.YYYY');
+			}
+		} else if (type === 'input-date') {
+			return moment(date).format('YYYY-MM-DD');
 		}
 	}
 }

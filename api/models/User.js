@@ -6,14 +6,14 @@
 */
 
 module.exports = {
-	tableName: 'users', // название таблицы в БД
-	adapter: 'psqlServer', //настройки соединения с БД (файл config/connections.js)
-	autoPK: false, //отключаем автоматическое определение первичного ключа
-	attributes: { //поля в таблице
+	tableName: 'users',
+	adapter: 'psqlServer',
+	autoPK: false,
+	attributes: {
 		id: {
 			type: 'integer',
-			primaryKey: true, //первичный ключ
-			autoIncrement: true, //автоматическое увеличение id
+			primaryKey: true,
+			autoIncrement: true,
 			unique: true
 		},
 		login: {
@@ -32,6 +32,9 @@ module.exports = {
 		middleName: {
 			type: 'string'
 		},
+        avatar: {
+            type: 'string'
+        },
         password: {
             type: 'string',
             required: true
@@ -39,6 +42,28 @@ module.exports = {
         isAdmin: {
             type: 'integer',
             required: true
+        },
+        birthday: {
+            type: 'date'
+        },
+        education: {
+            collection: 'education',
+            via: 'user'
+        },
+        work: {
+            collection: 'work',
+            via: 'user'
+        },
+        contacts: {
+            collection: 'contact',
+            via: 'user'
+        },
+        publications: {
+            collection: 'publication',
+            via: 'user'
+        },
+        additionalInfo: {
+            type: 'string'
         }
 	},
 	//метод для регистрации нового пользователя

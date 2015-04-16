@@ -1,0 +1,127 @@
+<link href="/linker/styles/profile.css" rel="stylesheet">
+<script src="/linker/js/profile/edit.js" type="text/javascript"></script>
+
+<div class="row">
+	<div class="col-md-8 col-md-offset-2 container content-column">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="panel panel-info">
+					<div class="panel-heading">
+						<h2 class="panel-title"><%- Helper.translate(req, 'ejs-profile-info') %></h2>
+					</div>
+					<div class="panel-body">
+						<% include ../user/show %>
+					</div>
+					<div class="panel-footer">
+						<div class="form-group">
+							<button class="btn btn-success edit" data-type="user"><%- Helper.translate(req, 'ejs-btn-edit') %></button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<div class="panel panel-info">
+					<div class="panel-heading">
+						<h2 class="panel-title"><%- Helper.translate(req, 'ejs-profile-education') %></h2>
+					</div>
+					<div class="panel-body">
+						<% user.education.forEach(function(education) { %>
+							<div class="panel panel-info">
+								<div class="panel-body">
+									<% include ../education/show %>
+								</div>
+								<div class="panel-footer">
+									<div class="form-group">
+										<button class="btn btn-success edit" data-type="education" data-id="<%= education.id %>"><%- Helper.translate(req, 'ejs-btn-edit') %></button>
+										<button class="btn btn-success delete" data-type="education" data-id="<%= education.id %>"><%- Helper.translate(req, 'ejs-btn-delete') %></button>
+									</div>
+								</div>
+							</div>
+						<% }) %>
+					</div>
+					<div class="panel-footer">
+						<button class="btn btn-success add" data-type="education"><%- Helper.translate(req, 'ejs-btn-add') %></button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<div class="panel panel-info">
+					<div class="panel-heading">
+						<h2 class="panel-title"><%- Helper.translate(req, 'ejs-profile-work') %></h2>
+					</div>
+					<div class="panel-body">
+						<% user.work.forEach(function(work) { %>
+							<div class="panel panel-info">
+								<div class="panel-body">
+									<% include ../work/show %>
+								</div>
+								<div class="panel-footer">
+									<div class="form-group">
+										<button class="btn btn-success edit" data-type="work" data-id="<%= work.id %>"><%- Helper.translate(req, 'ejs-btn-edit') %></button>
+										<button class="btn btn-success delete" data-type="work" data-id="<%= work.id %>"><%- Helper.translate(req, 'ejs-btn-delete') %></button>
+									</div>
+								</div>
+							</div>
+						<% }) %>
+					</div>
+					<div class="panel-footer">
+						<button class="btn btn-success add" data-type="work"><%- Helper.translate(req, 'ejs-btn-add') %></button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<div class="panel panel-info">
+					<div class="panel-heading">
+						<h2 class="panel-title"><%- Helper.translate(req, 'ejs-profile-publications') %></h2>
+					</div>
+					<div class="panel-body">
+						<% user.publications.forEach(function(publication) { %>
+							<div class="panel panel-info">
+								<div class="panel-body">
+									<% include ../publication/show %>
+								</div>
+								<div class="panel-footer">
+									<div class="form-group">
+										<button class="btn btn-success edit" data-type="publication" data-id="<%= publication.id %>"><%- Helper.translate(req, 'ejs-btn-edit') %></button>
+										<button class="btn btn-success delete" data-type="publication" data-id="<%= publication.id %>"><%- Helper.translate(req, 'ejs-btn-delete') %></button>
+									</div>
+								</div>
+							</div>
+						<% }) %>
+					</div>
+					<div class="panel-footer">
+						<button class="btn btn-success add" data-type="publication"><%- Helper.translate(req, 'ejs-btn-add') %></button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<div class="panel panel-info">
+					<div class="panel-heading">
+						<h2 class="panel-title"><%- Helper.translate(req, 'ejs-profile-additionalInfo') %></h2>
+					</div>
+					<div class="panel-body">
+						<%- user.additionalInfo %>
+					</div>
+					<div class="panel-footer">
+						<div class="form-group">
+							<button class="btn btn-success edit" data-type="additionalInfo" data-id="<%= user.id %>"><%- Helper.translate(req, 'ejs-btn-edit') %></button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<% include ../user/card %>
+<% include ../education/card %>
+<% include ../work/card %>
+<% include ../publication/card %>

@@ -1,0 +1,35 @@
+<div class="modal fade" id="work-card" data-url="/profile/work" tabindex="-1" role="dialog" aria-labelledby="work-card-label" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title" id="work-card-label"><%- Helper.translate(req, 'ejs-work-card-label') %></h4>
+			</div>
+			<div class="modal-body">
+				<form>
+					<div class="form-group">
+						<label class="form-control" for="work-card-place-text"><%- Helper.translate(req, 'ejs-work-card-place-text') %></label>
+						<input class="form-control" data-attr="place" type="text" id="work-card-place-text" />
+					</div>
+					<div class="form-group">
+						<label class="form-control" for="work-card-rank-text"><%- Helper.translate(req, 'ejs-work-card-rank-text') %></label>
+						<input class="form-control" data-attr="rank" type="text" id="work-card-rank-text" />
+					</div>
+					<div class="form-group">
+						<label class="form-control" for="work-card-startedAt-text"><%- Helper.translate(req, 'ejs-work-card-startedAt-text') %></label>
+						<input class="form-control" data-attr="startedAt" type="date" id="work-card-startedAt-text" />
+					</div>
+					<div class="form-group">
+						<label class="form-control" for="work-card-rank-text"><%- Helper.translate(req, 'ejs-work-card-endedAt-text') %></label>
+						<input class="form-control" data-attr="endedAt" type="date" id="work-card-endedAt-text" />
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default cancel" data-type="work" data-attr="id" data-dismiss="modal"><%- Helper.translate(req, 'ejs-btn-cancel') %></button>
+				<button type="button" class="btn btn-primary delete" data-type="work" data-attr="id"><%- Helper.translate(req, 'ejs-btn-delete') %></button>
+				<button type="button" class="btn btn-primary save" data-type="work" data-attr="id"><%- Helper.translate(req, 'ejs-btn-save') %></button>
+			</div>
+		</div>
+	</div>
+</div>

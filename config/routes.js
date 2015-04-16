@@ -105,6 +105,62 @@ module.exports.routes = {
 	'get /news': {
 		controller: 'main',
 		action: 'news'
+	},
+
+//profile
+	'get /profile': {
+		controller: 'profile',
+		action: 'index'
+	},
+
+	'get /profile/edit': {
+		controller: 'profile',
+		action: 'profileEdit'
+	},
+
+	'get /profile/user': {
+		controller: 'profile',
+		action: 'getUser'
+	},
+
+	'put /profile/user': {
+		controller: 'profile',
+		action: 'updateUser'
+	},
+
+	'get /profile/education': {
+		controller: 'profile',
+		action: 'getEducation'
+	},
+
+	'put /profile/education': {
+		controller: 'profile',
+		action: 'updateEducation'
+	},
+
+	'post /profile/education': {
+		controller: 'profile',
+		action: 'postEducation'
+	},
+
+	'get /profile/work': {
+		controller: 'profile',
+		action: 'getWork'
+	},
+
+	'put /profile/work': {
+		controller: 'profile',
+		action: 'updateWork'
+	},
+
+	'post /profile/work': {
+		controller: 'profile',
+		action: 'postWork'
+	},
+
+	'get /profile/publication': {
+		controller: 'profile',
+		action: 'getPublication'
 	}
 	/***************************************************************************
 	*                                                                          *
