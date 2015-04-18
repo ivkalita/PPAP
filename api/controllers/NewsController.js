@@ -7,7 +7,7 @@
 
 module.exports = {
 	index: function(req, res) {
-		var page = req.param('page') || 1; 
+		var page = req.param('page') || 1;
 		News.find()
 			.sort({createdAt: 'desc'})
 			.paginate({page: page, limit: 10})

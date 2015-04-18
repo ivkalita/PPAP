@@ -21,6 +21,52 @@
 	"ejs-layout-btn-signup": "Sign up",
 	"ejs-layout-btn-admin": "Admin Toolbar",
 	"ejs-layout-title": "PPAP",
+	"ejs-layout-btn-profile-edit": "Edit profile",
 
-	"ejs-news-title": "News"
+	"ejs-news-title": "News",
+
+	"ejs-homepage": "Home",
+	"ejs-birthday": "Birthday",
+	"ejs-profile-education": "Education",
+	"ejs-profile-work": "Work",
+	"ejs-profile-publication": "Publications",
+	"ejs-profile-additionalInfo": "About",
+
+	"ejs-profile-avatar": "Avatar",
+	"ejs-profile-info": "Main info",
+	"ejs-profile-contacts": "Contacts",
+
+	"ejs-user-card-firstName-text": "First name",
+	"ejs-user-card-lastName-text": "Last name",
+	"ejs-user-card-middleName-text": "Middle name",
+	"ejs-user-card-birthday-text": "Birthday",
+	"ejs-password": "Password",
+
+	"ejs-education-card-label": "Education",
+	"ejs-education-card-place-text": "Place",
+	"ejs-education-card-info-text": "Information",
+
+	"ejs-work-card-label": "Work",
+	"ejs-work-card-place-text": "Place",
+	"ejs-work-card-rank-text": "Rank",
+	"ejs-work-card-startedAt-text": "Since",
+	"ejs-work-card-endedAt-text": "Until",
+
+	"ejs-publication-card-label": "Publication",
+	"ejs-publication-card-info-text": "Information",
+
+	"ejs-contact-card-label": "Contact",
+	"ejs-contact-card-type-text": "Type",
+	"ejs-contact-card-info-text": "Information",
+
+	"ejs-additionalInfo-card-label": "About",
+	"ejs-additionalInfo-card-text": "Text",
+
+	"ejs-btn-add": "Add",
+	"ejs-btn-save": "Save",
+	"ejs-btn-delete": "Delete",
+	"ejs-btn-cancel": "Cancel",
+	"ejs-btn-edit": "Edit"
+
+
 }

@@ -1,0 +1,6 @@
+<h4 class="list-group-item-heading"><%= item.title %></h4>
+<h5><%- Helper.convertDate(req, item.createdAt) %></h5>
+<% if (typeof(item.mainImg) !== 'undefined' && item.mainImg !== null) { %>
+	<img src="<%= item.mainImg.path %>">
+<% } %>
+<p><%= item.description %></p>

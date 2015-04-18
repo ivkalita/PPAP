@@ -21,6 +21,50 @@
 	"ejs-layout-btn-signup": "Регистрация",
 	"ejs-layout-btn-admin": "Панель",
 	"ejs-layout-title": "ППАП",
+	"ejs-layout-btn-profile-edit": "Редактировать профиль",
 
-	"ejs-news-title": "Новости"
+	"ejs-news-title": "Новости",
+
+	"ejs-homepage": "Главная",
+	"ejs-birthday": "Дата рождения",
+	"ejs-profile-education": "Образование",
+	"ejs-profile-work": "Работа",
+	"ejs-profile-publication": "Публикации",
+	"ejs-profile-additionalInfo": "О пользователе",
+
+	"ejs-profile-avatar": "Аватар",
+	"ejs-profile-info": "Главная информация",
+	"ejs-profile-contacts": "Контакты",
+
+	"ejs-user-card-firstName-text": "Имя",
+	"ejs-user-card-lastName-text": "Фамилия",
+	"ejs-user-card-middleName-text": "Отчество",
+	"ejs-user-card-birthday-text": "Дата рождения",
+	"ejs-password": "Пароль",
+
+	"ejs-education-card-label": "Образование",
+	"ejs-education-card-place-text": "Место",
+	"ejs-education-card-info-text": "Информация",
+
+	"ejs-work-card-label": "Работа",
+	"ejs-work-card-place-text": "Место",
+	"ejs-work-card-rank-text": "Должность",
+	"ejs-work-card-startedAt-text": "Начиная с",
+	"ejs-work-card-endedAt-text": "По",
+
+	"ejs-publication-card-label": "Публикация",
+	"ejs-publication-card-info-text": "Информация",
+
+	"ejs-contact-card-label": "Контакт",
+	"ejs-contact-card-type-text": "Тип",
+	"ejs-contact-card-info-text": "Информация",
+
+	"ejs-additionalInfo-card-label": "О пользователе",
+	"ejs-additionalInfo-card-text": "Текст",
+
+	"ejs-btn-add": "Добавить",
+	"ejs-btn-save": "Сохранить",
+	"ejs-btn-delete": "Удалить",
+	"ejs-btn-cancel": "Отмена",
+	"ejs-btn-edit": "Редактировать"
 }

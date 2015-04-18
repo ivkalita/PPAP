@@ -161,6 +161,46 @@ module.exports.routes = {
 	'get /profile/publication': {
 		controller: 'profile',
 		action: 'getPublication'
+	},
+
+	'put /profile/publication': {
+		controller: 'profile',
+		action: 'updatePublication'
+	},
+
+	'post /profile/publication': {
+		controller: 'profile',
+		action: 'postPublication'
+	},
+
+	'get /profile/additionalInfo': {
+		controller: 'profile',
+		action: 'getAdditionalInfo'
+	},
+
+	'put /profile/additionalInfo': {
+		controller: 'profile',
+		action: 'updateAdditionalInfo'
+	},
+
+	'get /profile/contact': {
+		controller: 'profile',
+		action: 'getContact'
+	},
+
+	'put /profile/contact': {
+		controller: 'profile',
+		action: 'updateContact'
+	},
+
+	'post /profile/contact': {
+		controller: 'profile',
+		action: 'postContact'
+	},
+
+	'post /profile/avatar': {
+		controller: 'profile',
+		action: 'postAvatar'
 	}
 	/***************************************************************************
 	*                                                                          *

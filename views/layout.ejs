@@ -1,103 +1,118 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Приморская психологическая ассоциация психологов</title>
+	<head>
+		<title>Приморская психологическая ассоциация психологов</title>
 
-    <!-- Viewport mobile tag for sensible mobile support -->
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<!-- Viewport mobile tag for sensible mobile support -->
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    <link href='http://fonts.googleapis.com/css?family=Yeseva+One&amp;subset=latin,cyrillic' rel='stylesheet' type='text/css'>
-    <!--STYLES-->
-    <link rel="stylesheet" href="/styles/bootstrap-theme.css">
-    <link rel="stylesheet" href="/styles/bootstrap.css">
-    <link rel="stylesheet" href="/styles/custom.css">
-    <link rel="stylesheet" href="/styles/importer.css">
-    <link rel="stylesheet" href="/styles/loader.css">
-    <!--STYLES END-->
-    <link rel="stylesheet" href="/linker/styles/bootstrap-select.min.css">
-    <!--SCRIPTS-->
-    <script src="/js/dependencies/sails.io.js"></script>
-    <script src="/js/dependencies/jquery-v1.11.2.min.js"></script>
-    <script src="/js/alerts.js"></script>
-    <script src="/js/bootstrap.js"></script>
-    <!--SCRIPTS END-->
-    <script src="/linker/js/bootstrap-select.min.js"></script>
-    <script src="/linker/js/interface.js"></script>
-    <script src="/linker/js/ckeditor-fix.js"></script>
-  </head>
+		<link href='http://fonts.googleapis.com/css?family=Yeseva+One&amp;subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+		<!--STYLES-->
+		<link rel="stylesheet" href="/styles/bootstrap-theme.css">
+		<link rel="stylesheet" href="/styles/bootstrap.css">
+		<link rel="stylesheet" href="/styles/custom.css">
+		<link rel="stylesheet" href="/styles/importer.css">
+		<link rel="stylesheet" href="/styles/loader.css">
+		<!--STYLES END-->
+		<link rel="stylesheet" href="/linker/styles/bootstrap-select.min.css">
+		<!--SCRIPTS-->
+		<script src="/js/dependencies/sails.io.js"></script>
+		<script src="/js/dependencies/jquery-v1.11.2.min.js"></script>
+		<script src="/js/alerts.js"></script>
+		<script src="/js/bootstrap.js"></script>
+		<!--SCRIPTS END-->
+		<script src="/linker/js/bootstrap-select.min.js"></script>
+		<script src="/linker/js/interface.js"></script>
+		<script src="/linker/js/ckeditor-fix.js"></script>
+	</head>
 
-  <body>
-    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href = "/">Тут логотип</a>
-        </div>
-        <div class="navbar-right">
-          <% if (req.session.hasOwnProperty('me') && req.session.me.isAdmin) {%>
-            <button type="button" class="btn btn-success navbar-btn" id="admin-enter"><span class="glyphicon glyphicon-wrench"> <%- Helper.translate(req, 'ejs-layout-btn-admin') %></span></button>
-          <% } %>
-          <select id="locale-select" class="selectpicker">
-            <option
-              <% if (req.session.hasOwnProperty('locale') && req.session.locale == 'en') { %>
-                selected
-              <% } %>
-            value="en">En</option>
-            <option
-            <% if (!req.session.hasOwnProperty('locale') || req.session.locale == 'ru') { %>
-                selected
-              <% } %>
-            value="ru">Ru</option>
-          </select>
-          <% if (req.session.hasOwnProperty('me')) { %>
-            <a class="navbar-text" href="/profile"><%- req.session.me.firstName %></a>
-            <a href = "/logout">
-              <button type="button" class="btn btn-success navbar-btn"><span class="glyphicon glyphicon-log-out"> <%- Helper.translate(req, 'ejs-layout-btn-logout') %></span></button>
-            </a>
-          <% } else { %>
-            <a href = "/login">
-              <button type="button" class="btn btn-success navbar-btn"><span class="glyphicon glyphicon-log-in"> <%- Helper.translate(req, 'ejs-layout-btn-login') %></span></button>
-            </a>
-            <a href = "/signup">
-              <button type="button" class="btn btn-success navbar-btn"><%- Helper.translate(req, 'ejs-layout-btn-signup') %></button>
-            </a>
-          <% } %>
-        </div>
-      </div>
-    </div>
-    <div class="container">
-      <div class = "row">
-        <div class="col-md-12">
-          <div class="alerts">
-            <div id="error-message-div" class="alert alert-danger hidden" role="alert">
-              <button type="button" class="close" data-dismiss="alert" aria-label=<%- Helper.translate(req, 'ejs-layout-alert-close') %>><span aria-hidden="true">&times;</span></button>
-              <h4>Ошибка:</h4>
-              <h5 id="error-message"></h5>
-            </div>
-            <div id="success-message-div" class="alert alert-success hidden" role="alert">
-              <button type="button" class="close" data-dismiss="alert" aria-label=<%- Helper.translate(req, 'ejs-layout-alert-close') %>><span aria-hidden="true">&times;</span></button>
-              <h4>Успешно:</h4>
-              <h5 id="success-message"></h5>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-10 col-md-offset-1 main-info">
-          <h1><%- Helper.translate(req, 'ejs-layout-title') %></h1>
-          <img src="/images/logo.png">
-        </div>
-      </div>
-      <%- body %>
+	<body>
+		<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+			<div class="container col-md-10 col-md-offset-1">
+				<div class="row">
+					<div class="col-md-10 col-md-offset-1 title">
+						<div class="header-middle">
+							<div class="col-md-1">
+								<img class="logo" src="/images/logo.png" alt="ППАП">
+							</div>
+							<div class="col-md-11">
+								<h2>Приморская профессиональная ассоциация психологов</h2>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-1">
+						<select id="locale-select" class="selectpicker">
+							<option
+								<% if (req.session.hasOwnProperty('locale') && req.session.locale == 'en') { %>
+									selected
+								<% } %>
+							value="en">En</option>
+							<option
+							<% if (!req.session.hasOwnProperty('locale') || req.session.locale == 'ru') { %>
+									selected
+								<% } %>
+							value="ru">Ru</option>
+						</select>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="left-menu">
+			<div class="list-group">
+				<% if (req.session.hasOwnProperty('me')) { %>
+					<li class="list-group-item">
+						<a href="/profile"><%- req.session.me.firstName %> <%- req.session.me.lastName %></a>
+					</li>
+					<li class="list-group-item">
+						<a href = "/logout">
+							<button type="button" class="btn btn-success navbar-btn"><span class="glyphicon glyphicon-log-out"> <%- Helper.translate(req, 'ejs-layout-btn-logout') %></span></button>
+						</a>
+						<% if (req.session.me.isAdmin) {%>
+							<button type="button" class="btn btn-success navbar-btn" id="admin-enter"><span class="glyphicon glyphicon-wrench"> <%- Helper.translate(req, 'ejs-layout-btn-admin') %></span></button>
+						<% } %>
+						<a href="/profile/edit">
+							<button type="button" class="btn btn-success navbar-btn"><span class="glyphicon glyphicon-pencil"> <%- Helper.translate(req, 'ejs-layout-btn-profile-edit') %></span></button>
+						</a>
+					</li>
+				<% } else { %>
+					<li class="list-group-item">
+						<a href = "/login">
+							<button type="button" class="btn btn-success navbar-btn"><span class="glyphicon glyphicon-log-in"> <%- Helper.translate(req, 'ejs-layout-btn-login') %></span></button>
+						</a>
+						<a href = "/signup">
+							<button type="button" class="btn btn-success navbar-btn"><%- Helper.translate(req, 'ejs-layout-btn-signup') %></button>
+						</a>
+					</li>
+				<% } %>
+			</div>
+			<div class="list-group">
+				<a class="list-group-item" href="/"><%- Helper.translate(req, 'ejs-homepage') %></a>
+				<a class="list-group-item" href="/news"><%- Helper.translate(req, 'ejs-news-title') %></a>
+			</div>
+		</div>
+		<div class="container">
+			<div class = "row">
+				<div class="col-md-12">
+					<div class="alerts">
+						<div id="error-message-div" class="alert alert-danger hidden" role="alert">
+							<button type="button" class="close" data-dismiss="alert" aria-label=<%- Helper.translate(req, 'ejs-layout-alert-close') %>><span aria-hidden="true">&times;</span></button>
+							<h4>Ошибка:</h4>
+							<h5 id="error-message"></h5>
+						</div>
+						<div id="success-message-div" class="alert alert-success hidden" role="alert">
+							<button type="button" class="close" data-dismiss="alert" aria-label=<%- Helper.translate(req, 'ejs-layout-alert-close') %>><span aria-hidden="true">&times;</span></button>
+							<h4>Успешно:</h4>
+							<h5 id="success-message"></h5>
+						</div>
+					</div>
+				</div>
+			</div>
+			<%- body %>
 
-      <!--TEMPLATES-->
-      
-      <!--TEMPLATES END-->
+			<!--TEMPLATES-->
+			
+			<!--TEMPLATES END-->
 
-    </div>
-  </body>
+		</div>
+	</body>
 </html>

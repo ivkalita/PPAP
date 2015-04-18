@@ -24,7 +24,7 @@ function clearData() {
 function syncCardWithData() {
 	$('#input-title').val(currentNews.title);
 	$('#input-description').val(currentNews.description);
-	CKEDITOR.instances['input-text'].setData(currentNews.text);4
+	CKEDITOR.instances['input-text'].setData(currentNews.text);
 	if (typeof(currentNews.id) === 'undefined' || currentNews.id == null) {
 		$('#delete-btn').hide();
 	} else {

@@ -12,7 +12,11 @@ function prepareCard(card, id) {
 			}
 			var elem = card.find('[data-attr="' + attr + '"]');
 			if (elem) {
-				elem.val(resData[attr]);
+				if (attr === 'additionalInfo') {
+					CKEDITOR.instances[elem.attr('id')].setData(resData[attr]);
+				} else {
+					elem.val(resData[attr]);
+				}
 			}
 		}
 		clearCard(card);
@@ -70,7 +74,11 @@ $(function() {
 			data = {}
 		;
 		inputs.each(function() {
-			data[$(this).data('attr')] = $(this).val().trim();
+			if ($(this).data('isck')) {
+				data[$(this).data('attr')] = CKEDITOR.instances[$(this).attr('id')].getData().trim();
+			} else {
+				data[$(this).data('attr')] = $(this).val().trim();
+			}
 		});
 		if (id) {
 			data.id = id;

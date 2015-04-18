@@ -254,5 +254,161 @@ module.exports = {
 			});
 		});
 	},
+
+	updatePublication: function(req, res) {
+		var id = req.body.id,
+			userId = req.session.me.id,
+			data = {
+				info: req.body.info
+			}
+		;
+		Publication.update({id: id, user: userId}, data).exec(function(err, publications) {
+			if (err) {
+				sails.log.error('ST >>ERROR: ProfileController.updatePublication()');
+				sails.log.error(err);
+				return res.serverError();
+			}
+			return res.ok();
+		});
+	},
+
+	postPublication: function(req, res) {
+		var userId = req.session.me.id,
+			data = {
+				info: req.body.info,
+				user: userId
+			}
+		;
+		Publication.create(data).exec(function(err, publications) {
+			if (err) {
+				sails.log.error('ST >>ERROR: ProfileController.postPublication()');
+				sails.log.error(err);
+				return res.serverError();
+			}
+			return res.ok();
+		});
+	},
+
+	getAdditionalInfo: function(req, res) {
+		var id = req.session.me.id;
+		User.find({id: id}).exec(function(err, users) {
+			if (err) {
+				sails.log.error('ST >>ERROR: ProfileController.getAdditionalInfo()');
+				sails.log.error(err);
+				return res.serverError();
+			}
+			if (users.length === 0) {
+				sails.log.warn('ST >>WARN: ProfileController.getAdditionalInfo()');
+				sails.log.warn('No user found for id =', id);
+				return res.notFound();
+			}
+			return res.ok({
+				id: id,
+				additionalInfo: users[0].additionalInfo
+			});
+		});
+	},
+
+	updateAdditionalInfo: function(req, res) {
+		var id = req.session.me.id,
+			data = {
+				additionalInfo: req.body.additionalInfo
+			}
+		;
+		User.update({id: id}, data).exec(function(err, users) {
+			if (err) {
+				sails.log.error('ST >>ERROR: ProfileController.updateAdditionalInfo()');
+				sails.log.error(err);
+				return res.serverError();
+			}
+			return res.ok();
+		});
+	},
+
+	getContact: function(req, res) {
+		var id = req.param('id'),
+			userId = req.session.me.id
+		;
+		Contact.find({id: id}).exec(function(err, contacts) {
+			if (err) {
+				sails.log.error('ST >>ERROR: ProfileController.getContact()');
+				sails.log.error(err);
+				return res.serverError();
+			}
+			if (contacts.length === 0 || contacts[0].user !== userId) {
+				sails.log.warn('ST >>Warn: ProfileController.getContact()');
+				sails.log.warn('work not found');
+				return res.notFound();
+			}
+			return res.ok({
+				id: contacts[0].id,
+				'type': contacts[0]['type'],
+				'info': contacts[0]['info']
+			});
+		});
+	},
+
+	updateContact: function(req, res) {
+		var id = req.body.id,
+			userId = req.session.me.id,
+			data = {
+				'type': req.body['type'],
+				'info': req.body['info']
+			}
+		;
+		Contact.update({id: id, user: userId}, data).exec(function(err, contacts) {
+			if (err) {
+				sails.log.error('ST >>ERROR: ProfileController.updateContact()');
+				sails.log.error(err);
+				return res.serverError();
+			}
+			return res.ok();
+		});
+	},
+
+	postContact: function(req, res) {
+		var userId = req.session.me.id,
+			data = {
+				'type': req.body['type'],
+				'info': req.body['info'],
+				user: userId
+			}
+		;
+		Contact.create(data).exec(function(err, contacts) {
+			if (err) {
+				sails.log.error('ST >>ERROR: ProfileController.postContact()');
+				sails.log.error(err);
+				return res.serverError();
+			}
+			return res.ok();
+		});
+	},
+
+	postAvatar: function(req, res) {
+		var relPath = '/uploads/users/',
+			path = require('path'),
+			userId = req.session.me.id
+		;
+		req.file('avatar').upload({
+			dirname: process.cwd() + relPath
+		}, function(err, uploadedFiles) {
+			var file = uploadedFiles[0];
+			if (err) {
+				sails.log.error('ST >>ERROR: ProfileController.postAvatar()');
+				sails.log.error(err);
+				return res.serverError();
+			}
+			User.update({id: userId}, {avatar: relPath + path.basename(file.fd)}).exec(function(err, users) {
+				if (err) {
+					sails.log.error('ST >>ERROR: ProfileController.postAvatar()');
+					sails.log.error(err);
+					return res.serverError();
+				}
+				setTimeout(function() {
+					return res.redirect('/profile/edit');
+				}, 6000);
+			});
+		});
+	}
 };
 

@@ -1,0 +1,28 @@
+<div class="modal" data-url="/profile/additionalInfo" id="additionalInfo-card" tabindex="-1" role="dialog" aria-labelledby="additionalInfo-card-label" aria-hidden="true">
+	<div class="modal-dialog" style="width: 80%">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+				<h4 class="modal-title" id="additionalInfo-card-label"><%- Helper.translate(req, 'ejs-additionalInfo-card-label') %></h4>
+			</div>
+			<div class="modal-body">
+				<form role="form" action="/profile/additionalInfo" enctype="multipart/form-data" method="put">
+					<div class="form-group">
+						<label class="control-label" for="additionalInfo-card-text"><%- Helper.translate(req, 'ejs-additionalInfo-card-text') %></label>
+						<textarea name="additionalInfo" id="additionalInfo-card-text" data-attr="additionalInfo" rows="10" cols="80" data-isCk="true" class="form-control"></textarea>
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default cancel" data-attr="id" data-type="additionalInfo"data-dismiss="modal"><%- Helper.translate(req, 'ejs-btn-cancel') %></button>
+				<button type="button" class="btn btn-primary save" data-attr="id" data-type="additionalInfo"><%- Helper.translate(req, 'ejs-btn-save') %></button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script>
+$(function() {
+	CKEDITOR.replace('additionalInfo-card-text');
+});
+</script>

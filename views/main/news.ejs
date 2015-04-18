@@ -1,64 +1,40 @@
 <% if (news.length > 0) { %>
 	<div class="row">
 		<div class="col-md-8 col-md-offset-2 container content-column">
-			<% if (!onlyOne) { %>
-				<h1><%- Helper.translate(req, 'ejs-news-title') %></h1>
-				<ul class="pagination">
-					<% if (page === 1) { %>
-						<li class="disabled"><a aria-label="Previous">
+			<h1><%- Helper.translate(req, 'ejs-news-title') %></h1>
+			<ul class="pagination">
+				<% if (page === 1) { %>
+					<li class="disabled"><a aria-label="Previous">
+				<% } else { %>
+					<li><a href="/?page=<%= page - 1 %>" aria-label="Previous">
+				<% } %>
+						<span aria-hidden="true">&laquo;</span>
+					</a>
+				</li>
+				<% for (var i = 0; i < pageCnt; i++) { %>
+					<% if (i === page - 1) { %>
+						<li class="active">
 					<% } else { %>
-						<li><a href="/?page=<%= page - 1 %>" aria-label="Previous">
+						<li>
 					<% } %>
-							<span aria-hidden="true">&laquo;</span>
-						</a>
-					</li>
-					<% for (var i = 0; i < pageCnt; i++) { %>
-						<% if (i === page - 1) { %>
-							<li class="active">
-						<% } else { %>
-							<li>
-						<% } %>
-						<a href="/?page=<%= i + 1 %>"><%= i + 1 %></a></li>
-					<% } %>
-					<% if (page === pageCnt) { %>
-						<li class="disabled"><a href="#" aria-label="Next">
-					<% } else { %>
-						<li><a href="/?page=<%= page + 1 %>" aria-label="Next">
-					<% } %>
-							<span aria-hidden="true">&raquo;</span>
-						</a>
-					</li>
-				</ul>
-			<% } %>
-			<% for (var i = 0; i < news.length; i++) { %>
-				<div class="row">
-					<% if (!onlyOne) { %>
-						<div class="col-md-12 news-preview" data-href="/news?id=<%= news[i].id %>">
-							<h2><%= news[i].title %></h2>
-							<h4><%- Helper.convertDate(req, news[i].createdAt) %></h4>
-							<% if (typeof(news[i].mainImg) !== 'undefined' && news[i].mainImg !== null) { %>
-								<img src="<%= news[i].mainImg.path %>">
-							<% } %>
-							<p><%= news[i].description %></p>
-						</div>
-					<% } else { %>
-						<div class="col-md-12 news-header">
-							<h2><%= news[i].title %></h2>
-							<h4><%- Helper.convertDate(news[i].createdAt) %></h4>
-							<p><%= news[i].description %></p>
-							<div class="news-content">
-								<%- news[i].text %>
-							</div>
-						</div>
-					<% } %>
-				</div>
-			<% } %>
+					<a href="/?page=<%= i + 1 %>"><%= i + 1 %></a></li>
+				<% } %>
+				<% if (page === pageCnt) { %>
+					<li class="disabled"><a href="#" aria-label="Next">
+				<% } else { %>
+					<li><a href="/?page=<%= page + 1 %>" aria-label="Next">
+				<% } %>
+						<span aria-hidden="true">&raquo;</span>
+					</a>
+				</li>
+			</ul>
+			<div class="list-group">
+			<% news.forEach(function(item) { %>
+				<a href="/news?id=<%= item.id %>" class="list-group-item">
+					<% include ../news/preview %>
+				</a>
+			<% }); %>
+			</div>
 		</div>
 	</div>
 <% } %>
-
-<script>
-	$('.news-preview').click(function() {
-		window.location.assign($(this).data('href'));
-	});
-</script>

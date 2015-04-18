@@ -34,12 +34,17 @@ module.exports = {
 						return res.serverError;
 					}
 					var pageCnt = cnt % 10 === 0 ? cnt / 10 : (cnt - cnt % 10) / 10 + 1;
-					return res.view('main/news.ejs', {
-						news: news,
-						onlyOne: id ? true : false,
-						page: parseInt(page),
-						pageCnt: pageCnt
-					});
+					if (id) {
+						return res.view('news/show.ejs', {
+							item: news[0]
+						});
+					} else {
+						return res.view('main/news.ejs', {
+							news: news,
+							page: parseInt(page),
+							pageCnt: pageCnt
+						});
+					}
 				});
 			});
 	},
