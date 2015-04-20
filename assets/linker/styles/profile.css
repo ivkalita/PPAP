@@ -2,6 +2,16 @@ img.avatar {
 	width: 200px;
 }
 
+img.avatar-preview {
+	width: 100px;
+	display: inline-block;
+}
+
+h3.name-preview {
+	display: inline-block;
+	margin-left: 20px;
+}
+
 div.user-name {
 	text-align: center;
 }

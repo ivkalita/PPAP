@@ -66,7 +66,10 @@
 	"ejs-btn-save": "Save",
 	"ejs-btn-delete": "Delete",
 	"ejs-btn-cancel": "Cancel",
-	"ejs-btn-edit": "Edit"
+	"ejs-btn-edit": "Edit",
+
+	"ejs-for-now": "Current time",
+	"ejs-users": "Psychologies"
 
 
 }

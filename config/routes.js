@@ -107,6 +107,12 @@ module.exports.routes = {
 		action: 'news'
 	},
 
+//users
+	'get /users': {
+		controller: 'main',
+		action: 'users'
+	},
+
 //profile
 	'get /profile': {
 		controller: 'profile',
@@ -143,6 +149,11 @@ module.exports.routes = {
 		action: 'postEducation'
 	},
 
+	'delete /profile/education': {
+		controller: 'profile',
+		action: 'deleteEducation'
+	},
+
 	'get /profile/work': {
 		controller: 'profile',
 		action: 'getWork'
@@ -151,6 +162,11 @@ module.exports.routes = {
 	'put /profile/work': {
 		controller: 'profile',
 		action: 'updateWork'
+	},
+
+	'delete /profile/work': {
+		controller: 'profile',
+		action: 'deleteWork'
 	},
 
 	'post /profile/work': {
@@ -171,6 +187,11 @@ module.exports.routes = {
 	'post /profile/publication': {
 		controller: 'profile',
 		action: 'postPublication'
+	},
+
+	'delete /profile/publication': {
+		controller: 'profile',
+		action: 'deletePublication'
 	},
 
 	'get /profile/additionalInfo': {
@@ -196,6 +217,11 @@ module.exports.routes = {
 	'post /profile/contact': {
 		controller: 'profile',
 		action: 'postContact'
+	},
+
+	'delete /profile/contact': {
+		controller: 'profile',
+		action: 'deleteContact'
 	},
 
 	'post /profile/avatar': {

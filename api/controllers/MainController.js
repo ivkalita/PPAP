@@ -49,6 +49,32 @@ module.exports = {
 			});
 	},
 
+	users: function(req, res) {
+		var page = req.param('page') || 1;
+		User.find()
+			.paginate({page: page, limit: 10})
+			.exec(function(err, users) {
+			if (err) {
+				sails.log.error('ST >>ERROR:MainController.users()');
+				sails.log.error(err);
+				return res.serverError();
+			}
+			User.count().exec(function(err, cnt) {
+				if (err) {
+					sails.log.error('ST >>ERROR:MainController.users()');
+					sails.log.error(err);
+					return res.serverError();
+				}
+				var pageCnt = cnt % 10 === 0 ? cnt / 10 : (cnt - cnt % 10) / 10 + 1;
+				return res.view('main/users.ejs', {
+					users: users,
+					page: parseInt(page),
+					pageCnt: pageCnt
+				});
+			});
+		});
+	},
+
 	home: function(req, res) {
 		sails.controllers.main.news(req, res);
 	}

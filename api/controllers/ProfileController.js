@@ -96,6 +96,14 @@ module.exports = {
 				middleName: req.body.middleName,
 				birthday: req.body.birthday
 			}
+		;
+		if (req.body.password) {
+			var bcrypt = require('bcrypt'),
+				salt = bcrypt.genSaltSync(10),
+				hash = bcrypt.hashSync(req.body.password, salt)
+			;
+			data.password = hash;
+		}
 		User.update({id: userId}, data).exec(function(err, user) {
 			if (err) {
 				sails.log.error('ST >>ERROR: ProfileController.updateUser()');
@@ -167,6 +175,20 @@ module.exports = {
 		});
 	},
 
+	deleteEducation: function(req, res) {
+		var userId = req.session.me.id,
+			id = req.body.id
+		;
+		Education.destroy({id: id, user: userId}).exec(function(err) {
+			if (err) {
+				sails.log.error('ST >>ERROR: ProfileController.deleteEducation()');
+				sails.log.error(err);
+				return res.serverError();
+			}
+			return res.ok();
+		});
+	},
+
 	getWork: function(req, res) {
 		var id = req.param('id'),
 			userId = req.session.me.id
@@ -199,13 +221,27 @@ module.exports = {
 				place: req.body.place,
 				rank: req.body.rank,
 				startedAt: req.body.startedAt,
-				endedAt: req.body.endedAt,
+				endedAt: req.body.endedAt ? req.body.endedAt : undefined,
 				user: userId
 			}
 		;
 		Work.update({id: id, user: userId}, data).exec(function(err, works) {
 			if (err) {
 				sails.log.error('ST >>ERROR: ProfileController.updateWork()');
+				sails.log.error(err);
+				return res.serverError();
+			}
+			return res.ok();
+		});
+	},
+
+	deleteWork: function(req, res) {
+		var userId = req.session.me.id,
+			id = req.body.id
+		;
+		Work.destroy({id: id, user: userId}).exec(function(err) {
+			if (err) {
+				sails.log.error('ST >>ERROR: ProfileController.deleteWork()');
 				sails.log.error(err);
 				return res.serverError();
 			}
@@ -265,6 +301,20 @@ module.exports = {
 		Publication.update({id: id, user: userId}, data).exec(function(err, publications) {
 			if (err) {
 				sails.log.error('ST >>ERROR: ProfileController.updatePublication()');
+				sails.log.error(err);
+				return res.serverError();
+			}
+			return res.ok();
+		});
+	},
+
+	deletePublication: function(req, res) {
+		var id = req.body.id,
+			userId = req.session.me.id
+		;
+		Publication.destroy({id: id, user: userId}).exec(function(err) {
+			if (err) {
+				sails.log.error('ST >>ERROR: ProfileController.deletePublication()');
 				sails.log.error(err);
 				return res.serverError();
 			}
@@ -359,6 +409,20 @@ module.exports = {
 		Contact.update({id: id, user: userId}, data).exec(function(err, contacts) {
 			if (err) {
 				sails.log.error('ST >>ERROR: ProfileController.updateContact()');
+				sails.log.error(err);
+				return res.serverError();
+			}
+			return res.ok();
+		});
+	},
+
+	deleteContact: function(req, res) {
+		var id = req.body.id,
+			userId = req.session.me.id
+		;
+		Contact.destroy({id: id, user: userId}).exec(function(err) {
+			if (err) {
+				sails.log.error('ST >>ERROR: ProfileController.deleteContact()');
 				sails.log.error(err);
 				return res.serverError();
 			}

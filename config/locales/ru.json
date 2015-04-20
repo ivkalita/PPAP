@@ -66,5 +66,8 @@
 	"ejs-btn-save": "Сохранить",
 	"ejs-btn-delete": "Удалить",
 	"ejs-btn-cancel": "Отмена",
-	"ejs-btn-edit": "Редактировать"
+	"ejs-btn-edit": "Редактировать",
+
+	"ejs-for-now": "Настоящее время",
+	"ejs-users": "Психологи"
 }

@@ -1,0 +1,6 @@
+<% if (user.avatar) { %>
+	<img src="<%= user.avatar %>" class="avatar-preview">
+<% } else { %>
+	<img src="/images/noavatar.png" class="avatar-preview">
+<% } %>
+<h3 class="name-preview"><%= user.lastName %> <%= user.firstName %> <%= user.middleName %></h3>

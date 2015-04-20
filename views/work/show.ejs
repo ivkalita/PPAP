@@ -1,1 +1,9 @@
-<p><%= work.place %> <%= work.rank %></p>
+<h5><b><%= work.place %></b></h5>
+<h6><%= work.rank %></h6>
+<h6><%- Helper.convertDate(req, work.startedAt, 'date') %> -
+<% if (work.endedAt) { %>
+	<%- Helper.convertDate(req, work.endedAt, 'date') %>
+<% } else { %>
+	<%- Helper.translate(req, 'ejs-for-now') %>
+<% } %>
+</h6>

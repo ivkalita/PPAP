@@ -1,0 +1,40 @@
+<link rel="stylesheet" href="/linker/styles/profile.css">
+
+<div class="row">
+	<div class="col-md-8 col-md-offset-2 container content-column">
+		<h1><%- Helper.translate(req, 'ejs-users') %></h1>
+		<ul class="pagination">
+			<% if (page === 1) { %>
+				<li class="disabled"><a aria-label="Previous">
+			<% } else { %>
+				<li><a href="/users?page=<%= page - 1 %>" aria-label="Previous">
+			<% } %>
+			<span aria-hidden="true">&laquo;</span>
+			</a>
+			</li>
+			<% for (var i = 0; i < pageCnt; i++) { %>
+				<% if (i === page - 1) { %>
+					<li class="active">
+				<% } else { %>
+					<li>
+				<% } %>
+				<a href="/users?page=<%= i + 1 %>"><%= i + 1 %></a></li>
+			<% } %>
+			<% if (page === pageCnt) { %>
+				<li class="disabled"><a href="#" aria-label="Next">
+			<% } else { %>
+				<li><a href="/users?page=<%= page + 1 %>" aria-label="Next">
+			<% } %>
+			<span aria-hidden="true">&raquo;</span>
+			</a>
+			</li>
+		</ul>
+		<div class="list-group">
+			<% users.forEach(function(user) { %>
+				<a href="/profile?id=<%= user.id %>" class="list-group-item">
+					<% include ../user/preview %>
+				</a>
+			<% }); %>
+		</div>
+	</div>
+</div>

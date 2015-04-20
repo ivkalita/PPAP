@@ -67,6 +67,7 @@ body {
 }
 
 div.left-menu {
+	background-color: #EEE;
 	position: fixed;
 	top: 150px;
 	left: 0px;

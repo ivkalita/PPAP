@@ -105,36 +105,12 @@ $(function() {
 		console.log(data);
 	});
 
-	$('button.save').click(function() {
+	$('button.delete').click(function() {
 		event.preventDefault();
-		var data = {},
-			fClass = $(this).data('class'),
-			it = $(this).data('it'),
-			id = $(this).data('id')
+		var dtype = $(this).data('type'),
+			id = $(this).data('id'),
+			url = "/profile/" + dtype
 		;
-		switch (fClass) {
-			case 'education':
-				data['place'] = $('#' + fClass + '-place-text-' + it).val().trim();
-				data['info'] = $('#' + fClass + '-info-text-' + it).val().trim();
-				if (data['place'] == '' && data['info'] == '') {
-					alert('!');
-					return;
-				}
-				break;
-			case 'work':
-				data['place'] = $('#' + fClass + '-place-text-' + it).val().trim();
-				data['rank'] = $('#' + fClass + '-rank-text-' + it).val().trim();
-				if (data['place'] == '' && data['info'] == '') {
-					alert('!');
-					return;
-				}
-				break;
-		}
-		if (id) {
-			console.log('update');
-		} else {
-			console.log('insert');
-		}
-		console.log(data);
+		io.socket.delete(url, {id: id}, refreshIf200);
 	});
 });
